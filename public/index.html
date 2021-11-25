@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,u ser-scalable=no">
     <title>DT外卖</title>
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <!--        引入字体图标-->
+    <!--引入字体图标-->
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_518606_6676bmcalnrhehfr.css">
-    <!--    解决点击响应延时 0.3s 问题-->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2965571_xm2lriyp2yq.css">
+    <!--解决点击响应延时 0.3s 问题-->
     <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
     <script>
       if ('addEventListener' in document) {
         document.addEventListener('DOMContentLoaded', function() {
-          FastClick.attach(document.body);
-        }, false);
+          FastClick.attach(document.body)
+        }, false)
       }
       if(!window.Promise) {
         document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
