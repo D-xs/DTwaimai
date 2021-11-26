@@ -134,7 +134,8 @@
 import Swiper from 'swiper'
 // 引入swiper的样式文件
 import 'swiper/dist/css/swiper.min.css'
-
+// 引入接口请求函数
+import {reqFoodCategoryList} from 'api'
 import HeaderTop from "components/HeaderTop/HeaderTop"
 import ShopList from "components/ShopList/ShopList"
 export default {
@@ -143,7 +144,7 @@ export default {
     HeaderTop,
     ShopList
   },
-  mounted() {
+  async mounted() {
     // 当该组件被渲染真实Dom时，创建Swiper对象，来实现轮播
     new Swiper('.swiper-container', {
       loop: true, // 循环模式选项
@@ -152,6 +153,9 @@ export default {
         el: '.swiper-pagination',
       },
     })
+    // 测试接口请求函数
+    let result = await reqFoodCategoryList()
+    console.log(result)
   }
 }
 </script>
