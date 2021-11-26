@@ -6,21 +6,12 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+
 import FooterGuide from "components/FooterGuide/FooterGuide"
 export default {
   name: 'App',
   components: {
     FooterGuide
-  },
-  mounted() {
-    // 获取后台数据，存放到msite的state中
-    this.getAddress()
-    this.getCategory()
-    this.getShops()
-  },
-  methods: {
-    ...mapActions('msite', ['getAddress', 'getCategory', 'getShops'])
   }
 }
 </script>
