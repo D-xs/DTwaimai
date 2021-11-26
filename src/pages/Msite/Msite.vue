@@ -1,7 +1,7 @@
 <template>
   <div class="msite">
       <!--首页头部-->
-    <HeaderTop title="昌平区北七家宏福科技园(337省道北)">
+    <HeaderTop :title="address.name">
         <span class="header_search" slot="left">
           <i class="iconfont icon-search"></i>
         </span>
@@ -134,8 +134,8 @@
 import Swiper from 'swiper'
 // 引入swiper的样式文件
 import 'swiper/dist/css/swiper.min.css'
-// 引入接口请求函数
-import {reqFoodCategoryList} from 'api'
+// 引入vuex提供的api
+import {mapState} from 'vuex'
 import HeaderTop from "components/HeaderTop/HeaderTop"
 import ShopList from "components/ShopList/ShopList"
 export default {
@@ -144,7 +144,10 @@ export default {
     HeaderTop,
     ShopList
   },
-  async mounted() {
+  computed: {
+    ...mapState('msite', ['address'])
+  },
+  mounted() {
     // 当该组件被渲染真实Dom时，创建Swiper对象，来实现轮播
     new Swiper('.swiper-container', {
       loop: true, // 循环模式选项
@@ -153,9 +156,6 @@ export default {
         el: '.swiper-pagination',
       },
     })
-    // 测试接口请求函数
-    let result = await reqFoodCategoryList()
-    console.log(result)
   }
 }
 </script>
