@@ -2,12 +2,17 @@
   <div class="msite">
       <!--首页头部-->
     <HeaderTop :title="address.name">
-        <span class="header_search" slot="left">
+        <span class="header_search" slot="left" @click="$router.push('/search')">
           <i class="iconfont icon-search"></i>
         </span>
-        <span class="header_login" slot="right">
-          <span class="header_login_text">登录|注册</span>
-        </span>
+        <router-link class="header_login" slot="right" :to="userInfo._id ? '/userinfo' : '/login'">
+          <span class="header_login_text" v-if="!userInfo._id">
+            登录|注册
+          </span>
+          <span class="header_login_text" v-else>
+            <i class="iconfont icon-person"></i>
+          </span>
+        </router-link>
       </HeaderTop>
       <!--首页导航-->
     <nav class="msite_nav">
@@ -60,6 +65,7 @@ export default {
   },
   computed: {
     ...mapState('msite', ['address', 'foodCategory', 'shops']),
+    ...mapState('profile',['userInfo']),
     // 根据foodCategory一维数组来生成二维数组，以此实现轮播图效果
     foodCategoryArr() {
       const { foodCategory } = this

@@ -7,9 +7,12 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 // 引入主页状态模块
 import msite from "./msite";
+// 引入个人中心模块
+import profile from "./profile";
 // 创建并暴露store对象
 export default new Vuex.Store({
   modules: {
-    msite
+    msite,
+    profile
   }
 })

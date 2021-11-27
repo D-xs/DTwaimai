@@ -1,20 +1,24 @@
 <template>
     <div class="order">
       <HeaderTop title="订单"></HeaderTop>
-      <section class="order_no_login">
+      <div class="order_no_login" v-if="!userInfo._id">
         <img src="./images/order/person.png">
         <h3>登录后查看外卖订单</h3>
-        <button>立即登陆</button>
-      </section>
+        <button @click="$router.push('/login')">立即登陆</button>
+      </div>
     </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import HeaderTop from "components/HeaderTop/HeaderTop"
 export default {
   name: "Order",
   components: {
     HeaderTop
+  },
+  computed: {
+    ...mapState('profile',['userInfo'])
   }
 }
 </script>
