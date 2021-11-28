@@ -166,7 +166,7 @@ export default {
       if(result.code === 0) {
         const user = result.data
         // 将user保存到vuex中profile的state中
-        this.$store.dispatch('profile/getUserInfo',user)
+        this.$store.dispatch('profile/recordUserInfo',user)
         // 跳转路由，去个人中心界面
         this.$router.replace('/profile')
       } else {
@@ -188,7 +188,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this)
+    this.getCaptcha()
   }
 }
 </script>

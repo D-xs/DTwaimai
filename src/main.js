@@ -5,9 +5,11 @@ import App from './App.vue'
 import router from './router'
 // 引入store对象
 import store from './store'
-
+// 引入mint-ui
+import { Button } from 'mint-ui'
 Vue.config.productionTip = false
-
+// 注册全局组件标签
+Vue.component(Button.name, Button)
 new Vue({
   render: h => h(App),
   router,
