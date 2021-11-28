@@ -11,6 +11,10 @@ const Search = () => import('pages/Search/Search')
 const Order = () => import('pages/Order/Order')
 const Profile = () => import('pages/Profile/Profile')
 const Login = () => import('pages/Login/Login')
+const Shop = () => import('pages/Shop/Shop')
+const ShopGoods = () => import('pages/Shop/ShopGoods/ShopGoods')
+const ShopRatings = () => import('pages/Shop/ShopRatings/ShopRatings')
+const ShopInfo = () => import('pages/Shop/ShopInfo/ShopInfo')
 // 创建路由
 const routes = [
   {
@@ -48,6 +52,28 @@ const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/shop',
+    component: Shop,
+    children: [
+      {
+        path: 'goods',
+        component: ShopGoods
+      },
+      {
+        path: 'ratings',
+        component: ShopRatings
+      },
+      {
+        path: 'info',
+        component: ShopInfo
+      },
+      {
+        path: '',
+        redirect: 'goods'
+      }
+    ]
   }
 ]
 // 创建路由器对象并暴露出去

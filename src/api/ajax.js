@@ -1,6 +1,5 @@
 // ajax请求函数模块
 import axios from "axios"
-axios.defaults.baseURL = '/api'
 // 返回值: Promise对象(异步返回的数据是：response.data)
 export default function ajax (url, data={}, type='GET') {
   // 再包一层promise，用来直接取出data

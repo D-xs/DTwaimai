@@ -9,10 +9,13 @@ Vue.use(Vuex)
 import msite from "./msite";
 // 引入个人中心模块
 import profile from "./profile";
+// 引入商家模块
+import shop from "./shop";
 // 创建并暴露store对象
 export default new Vuex.Store({
   modules: {
     msite,
-    profile
+    profile,
+    shop
   }
 })

@@ -1,38 +1,34 @@
 // 统一封装接口请求函数
 // 返回值：promise对象
-// [1、根据经纬度获取位置详情]
-// [2、获取食品分类列表]
-// [3、根据经纬度获取商铺列表]
-// [4、根据经纬度和关键字搜索商铺列表]
-// [5、获取一次性验证码]
-// [6、用户名密码登陆]
-// [7、发送短信验证码]
-// [8、手机号验证码登陆]
-// [9、根据会话获取用户信息]
-// [10、用户登出]
 // 引入ajax发送请求模块
 import ajax from "./ajax"
+const BASE_URL = '/api'
 // [1、根据经纬度获取位置详情]
-const reqAddress = (geohash) => ajax(`/position/${geohash}`)
+const reqAddress = (geohash) => ajax(`${BASE_URL}/position/${geohash}`)
 // [2、获取食品分类列表]
-const reqFoodCategoryList = () => ajax('/index_category')
+const reqFoodCategoryList = () => ajax(`${BASE_URL}/index_category`)
 // [3、根据经纬度获取商铺列表]
-const reqShopList = ({latitude, longitude}) => ajax(`/shops`,{latitude, longitude})
+const reqShopList = ({latitude, longitude}) => ajax(`${BASE_URL}/shops`,{latitude, longitude})
 // [4、根据经纬度和关键字搜索商铺列表]
-const reqSearchShopList = (keyword, geohash) => ajax(`/search_shops`,{keyword, geohash})
+const reqSearchShopList = (keyword, geohash) => ajax(`${BASE_URL}/search_shops`,{keyword, geohash})
 // [5、获取一次性验证码]
-const reqOnetimeVerificationCode = () => ajax(`/captcha`)
+const reqOnetimeVerificationCode = () => ajax(`${BASE_URL}/captcha`)
 // [6、用户名密码登陆]
-const reqLoginByUsername = (name, pwd, captcha) => ajax(`/login_pwd`,{name, pwd, captcha},'POST')
+const reqLoginByUsername = (name, pwd, captcha) => ajax(`${BASE_URL}/login_pwd`,{name, pwd, captcha},'POST')
 // [7、发送短信验证码]
-const reqSMSVerificationCode = (phone) => ajax(`/sendcode`,{phone})
+const reqSMSVerificationCode = (phone) => ajax(`${BASE_URL}/sendcode`,{phone})
 // [8、手机号验证码登陆]
-const reqLoginByPhoneVerificationCode = (phone, code) => ajax(`/login_sms`,{phone, code},'POST')
+const reqLoginByPhoneVerificationCode = (phone, code) => ajax(`${BASE_URL}/login_sms`,{phone, code},'POST')
 // [9、根据会话获取用户信息]
-const reqUserInfoBySession = () => ajax(`/userinfo`)
+const reqUserInfoBySession = () => ajax(`${BASE_URL}/userinfo`)
 // [10、用户登出]
-const reqLogout = () => ajax(`/logout`)
-
+const reqLogout = () => ajax(`${BASE_URL}/logout`)
+// [11. 获取商家信息]
+const reqShopInfo = () => ajax('/info')
+// [12. 获取商家商品数组]
+const reqShopGoods = () => ajax('/goods')
+// [13. 获取商家评价数组]
+const reqShopRatings = () => ajax('/ratings')
 // 对外暴露接口请求函数
 export {
   reqAddress,
@@ -44,5 +40,8 @@ export {
   reqSMSVerificationCode,
   reqLoginByPhoneVerificationCode,
   reqUserInfoBySession,
-  reqLogout
+  reqLogout,
+  reqShopInfo,
+  reqShopGoods,
+  reqShopRatings
 }
