@@ -43,19 +43,30 @@
             </li>
           </ul>
         </div>
+        <ShopCart></ShopCart>
       </div>
+      <Food :food="food" ref="food"></Food>
     </div>
 </template>
 
 <script>
 import BScroll from '@better-scroll/core'
 import {mapState} from 'vuex'
+import CartControl from "components/CartControl/CartControl"
+import Food from "components/Food/Food"
+import ShopCart from "components/ShopCart/ShopCart"
 export default {
   name: "ShopGoods",
+  components: {
+    CartControl,
+    Food,
+    ShopCart
+  },
   data() {
     return {
-      scrollY: 0,
-      tops: []
+      scrollY: 0, // 滚动的距离，Y轴的坐标(滑动过程中一直变化)
+      tops: [], // 所有右侧分类li的top组成的数组
+      food: {}  // 需要显示的food对象
     }
   },
   computed: {
@@ -101,7 +112,6 @@ export default {
         top += li.clientHeight
         tops.push(top)
       })
-
       // 3. 更新数据
       this.tops = tops
     },
@@ -113,6 +123,13 @@ export default {
       this.scrollY = scrollY
       // 更新右侧食物列表对应的位置（平滑滚动）
       this.foodsScroll.scrollTo(0, -scrollY, 500)
+    },
+    // 显示商品详细信息
+    showFood(food) {
+      // 设置food
+      this.food = food
+      // 显示food组件
+      this.$refs.food.toggleShow()
     }
   },
   mounted() {
