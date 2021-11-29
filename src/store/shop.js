@@ -22,13 +22,14 @@ export default {
       }
     },
     // 获取商家商品信息
-    async getShopGoods({commit}) {
+    async getShopGoods({commit}, callback) {
       // 发送异步ajax请求
       const result = await reqShopGoods()
       // 提交一个mutations
       if (result.code === 0) {
         const goods = result.data
         commit('RECEIVE_SHOP_GOODS', {goods})
+        callback && callback()
       } else {
         console.log(result.message)
       }
