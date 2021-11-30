@@ -13,7 +13,9 @@
       <router-link to="/shop/info" replace>商家</router-link>
     </div>
   </div>
-  <router-view></router-view>
+  <keep-alive include="ShopGoods">
+    <router-view></router-view>
+  </keep-alive>
 </div>
 </template>
 

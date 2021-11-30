@@ -10,7 +10,7 @@ const reqFoodCategoryList = () => ajax(`${BASE_URL}/index_category`)
 // [3、根据经纬度获取商铺列表]
 const reqShopList = ({latitude, longitude}) => ajax(`${BASE_URL}/shops`,{latitude, longitude})
 // [4、根据经纬度和关键字搜索商铺列表]
-const reqSearchShopList = (keyword, geohash) => ajax(`${BASE_URL}/search_shops`,{keyword, geohash})
+const reqSearchShopList = ({keyword, geohash}) => ajax(`${BASE_URL}/search_shops`,{keyword, geohash})
 // [5、获取一次性验证码]
 const reqOnetimeVerificationCode = () => ajax(`${BASE_URL}/captcha`)
 // [6、用户名密码登陆]

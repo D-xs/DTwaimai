@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <keep-alive include="Shop">
+      <router-view></router-view>
+    </keep-alive>
     <FooterGuide v-if="$route.meta.showFooter"></FooterGuide>
   </div>
 </template>

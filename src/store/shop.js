@@ -37,13 +37,14 @@ export default {
       }
     },
     // 获取商家商品评价
-    async getShopRatings({commit}) {
+    async getShopRatings({commit}, callback) {
       // 发送异步ajax请求
       const result = await reqShopRatings()
       // 提交一个mutations
       if (result.code === 0) {
         const ratings = result.data
         commit('RECEIVE_SHOP_RATINGS', {ratings})
+        callback && callback()
       } else {
         console.log(result.message)
       }
@@ -119,6 +120,10 @@ export default {
       // })
       // return total
       return state.cartFoods.reduce((preTotal, food) => preTotal + food.count * food.price, 0)
+    },
+    // 统计满意评价的个数
+    positiveSize(state) {
+      return state.ratings.reduce((preTotal, rating) => preTotal + (rating.rateType === 0 ? 1 : 0), 0)
     }
   }
 }
